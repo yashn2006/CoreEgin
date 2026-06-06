@@ -1,0 +1,194 @@
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500,400&f[]=general-sans@500,400&f[]=space-grotesk@700,500,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* CoreEgin — Obsidian Rose */
+  --color-ce-black: #0a0810;
+  --color-ce-surface: #110d1a;
+  --color-ce-card: #160d1f;
+  --color-ce-rose: #8b1a4a;
+  --color-ce-magenta: #c2185b;
+  --color-ce-plum: #3d1060;
+  --color-ce-text: #f0e8ff;
+  --color-ce-muted: #9b8fa8;
+  --color-ce-label: #c084a8;
+
+  /* Tunnel zone colors */
+  --color-ce-cyan: #00ffe0;
+  --color-ce-orange: #ff4d00;
+  --color-ce-violet: #7b61ff;
+  --color-ce-white: #f0f0f0;
+  --color-ce-border: #1a1a2e;
+
+  --font-display: "Clash Display", "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-general: "General Sans", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-label: "Space Grotesk", "Inter", sans-serif;
+}
+
+/* CDN fonts */
+
+:root {
+  --radius: 0.75rem;
+  --background: #0a0810;
+  --foreground: #f0e8ff;
+  --card: #160d1f;
+  --card-foreground: #f0e8ff;
+  --popover: #160d1f;
+  --popover-foreground: #f0e8ff;
+  --primary: #c2185b;
+  --primary-foreground: #ffffff;
+  --secondary: #110d1a;
+  --secondary-foreground: #f0e8ff;
+  --muted: #110d1a;
+  --muted-foreground: #9b8fa8;
+  --accent: #8b1a4a;
+  --accent-foreground: #f0e8ff;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #ffffff;
+  --border: rgba(139, 26, 74, 0.2);
+  --input: rgba(139, 26, 74, 0.2);
+  --ring: #c2185b;
+}
+
+/* Glass system */
+.ce-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(139, 26, 74, 0.2);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(194, 24, 91, 0.08);
+  transition: transform 300ms ease-out, border-color 300ms ease-out, box-shadow 300ms ease-out;
+}
+.ce-glass-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(194, 24, 91, 0.4);
+  box-shadow: 0 0 60px rgba(194, 24, 91, 0.15);
+}
+.ce-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(139, 26, 74, 0.25);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.animate-scanline { animation: scanline 4s linear infinite; }
+
+@keyframes ce-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.ce-float { animation: ce-float 4s ease-in-out infinite; }
+
+@keyframes ce-pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.ce-pulse-glow { animation: ce-pulse-glow 4s ease-in-out infinite; }
+
+@keyframes ce-bg-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.ce-bg-zoom { animation: ce-bg-zoom 20s ease-in-out infinite alternate; }
+
+@keyframes ce-grid-up {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -60px; }
+}
+.ce-grid {
+  background-image:
+    linear-gradient(rgba(139, 26, 74, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 26, 74, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: ce-grid-up 8s linear infinite;
+}
+
+@keyframes ce-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ce-marquee { animation: ce-marquee 30s linear infinite; }
+.ce-marquee-slow { animation: ce-marquee 25s linear infinite; }
+.ce-marquee-reverse { animation: ce-marquee 25s linear infinite reverse; }
+
+@keyframes ce-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.ce-blink { animation: ce-blink 1.2s ease-in-out infinite; }
+
+@keyframes ce-radar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.ce-radar-sweep { animation: ce-radar 3s linear infinite; transform-origin: center; }
+
+@keyframes ce-card-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(194,24,91,0.15); }
+  50% { box-shadow: 0 0 40px rgba(194,24,91,0.3); }
+}
+.ce-card-pulse { animation: ce-card-pulse 2s ease-in-out infinite; }
+
+@keyframes ce-border-trace {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.ce-text-glow { text-shadow: 0 0 60px rgba(194, 24, 91, 0.45); }
+
+html, body {
+  background: #0a0810;
+  color: #f0e8ff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body { background: #0a0810; color: #f0e8ff; }
+  ::selection { background: rgba(194, 24, 91, 0.4); color: #fff; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
